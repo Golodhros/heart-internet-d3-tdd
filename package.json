@@ -4,7 +4,8 @@
   "description": "Code for the blog post about D3 and TDD",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "karmatic",
+    "test:watch": "karmatic watch --no-headless"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/Golodhros/heart-internet-d3-tdd/issues"
   },
-  "homepage": "https://github.com/Golodhros/heart-internet-d3-tdd#readme"
+  "homepage": "https://github.com/Golodhros/heart-internet-d3-tdd#readme",
+  "dependencies": {
+    "d3": "^5.0.0"
+  },
+  "devDependencies": {
+    "karmatic": "^1.0.6"
+  }
 }
