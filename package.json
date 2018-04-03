@@ -1,0 +1,23 @@
+{
+  "name": "heart-internet-d3-tdd",
+  "version": "0.0.1",
+  "description": "Code for the blog post about D3 and TDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Golodhros/heart-internet-d3-tdd.git"
+  },
+  "keywords": [
+    "d3",
+    "tdd"
+  ],
+  "author": "Marcos Iglesias",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Golodhros/heart-internet-d3-tdd/issues"
+  },
+  "homepage": "https://github.com/Golodhros/heart-internet-d3-tdd#readme"
+}
