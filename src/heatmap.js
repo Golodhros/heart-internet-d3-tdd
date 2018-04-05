@@ -4,7 +4,7 @@ function heatmap() {
     const width = 800;
     const height = 400;
     const margin = {
-        top: 10,
+        top: 30,
         right: 10,
         bottom: 10,
         left: 30
@@ -20,7 +20,13 @@ function heatmap() {
         '#003c3f'
     ];
     const daysHuman = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-    const dayLabelWidth = 25;
+    const dayLabelWidth = 30;
+    const hoursHuman = [
+        '00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h',
+        '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h',
+        '18h', '19h', '20h', '21h', '22h', '23h'
+    ];
+    const hourLabelHeight = 20;
 
     let svg;
     let data;
@@ -29,6 +35,7 @@ function heatmap() {
     let chartHeight;
     let boxes;
     let dayLabels;
+    let hourLabels;
 
     function exports(_selection) {
         _selection.each(function(_data) {
@@ -41,6 +48,21 @@ function heatmap() {
             buildSVG(this);
             drawBoxes();
             drawDayLabels();
+
+            let hourLabelsGroup = svg.select('.hour-labels-group');
+            hourLabels = svg.select('.hour-labels-group').selectAll('.hour-label')
+                .data(hoursHuman);
+
+            hourLabels.enter()
+              .append('text')
+                .text((d) => d)
+                .attr('y', 0)
+                .attr('x', (d, i) => i * boxSize)
+                .style('text-anchor', 'middle')
+                .style('dominant-baseline', 'central')
+                .attr('class', 'hour-label');
+
+            hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
         });
     }
 
@@ -56,6 +78,9 @@ function heatmap() {
         container
           .append('g')
             .classed('day-labels-group', true);
+        container
+          .append('g')
+            .classed('hour-labels-group', true);
         container
           .append('g')
             .classed('metadata-group', true);

@@ -915,5 +915,12 @@ describe('Heatmap', () => {
 
             expect(actual).toEqual(expected);
         });
+
+        it('should render the hour labels', () => {
+            let expected = 24;
+            let actual = container.selectAll('.hour-label').nodes().length;
+
+            expect(actual).toEqual(expected);
+        });
     });
 });

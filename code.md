@@ -138,3 +138,33 @@ dayLabels.enter()
 dayLabelsGroup.attr('transform', `translate(-${dayLabelWidth}, ${boxSize/2})`);
 
 
+// Hours labels
+const hoursHuman = [
+    '00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h',
+    '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h',
+    '18h', '19h', '20h', '21h', '22h', '23h'
+];
+const hourLabelHeight = 20;
+
+...
+
+container
+  .append('g')
+    .classed('hour-labels-group', true);
+
+...
+
+let hourLabelsGroup = svg.select('.hour-labels-group');
+hourLabels = svg.select('.hour-labels-group').selectAll('.hour-label')
+    .data(hoursHuman);
+
+hourLabels.enter()
+  .append('text')
+    .text((d) => d)
+    .attr('y', 0)
+    .attr('x', (d, i) => i * boxSize)
+    .style('text-anchor', 'middle')
+    .style('dominant-baseline', 'central')
+    .attr('class', 'hour-label');
+
+hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
