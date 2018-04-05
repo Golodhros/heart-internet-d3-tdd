@@ -7,7 +7,7 @@ function heatmap() {
         top: 10,
         right: 10,
         bottom: 10,
-        left: 10
+        left: 30
     };
     const boxSize = 30;
     const colorSchema = [
@@ -19,6 +19,8 @@ function heatmap() {
         '#005e66',
         '#003c3f'
     ];
+    const daysHuman = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+    const dayLabelWidth = 25;
 
     let svg;
     let data;
@@ -26,6 +28,7 @@ function heatmap() {
     let chartWidth;
     let chartHeight;
     let boxes;
+    let dayLabels;
 
     function exports(_selection) {
         _selection.each(function(_data) {
@@ -37,6 +40,7 @@ function heatmap() {
             buildScales();
             buildSVG(this);
             drawBoxes();
+            drawDayLabels();
         });
     }
 
@@ -49,6 +53,9 @@ function heatmap() {
         container
           .append('g')
             .classed('chart-group', true);
+        container
+          .append('g')
+            .classed('day-labels-group', true);
         container
           .append('g')
             .classed('metadata-group', true);
@@ -88,6 +95,24 @@ function heatmap() {
             .classed('box', true);
 
         boxes.exit().remove();
+    }
+
+    function drawDayLabels() {
+        let dayLabelsGroup = svg.select('.day-labels-group');
+
+        dayLabels = svg.select('.day-labels-group').selectAll('.day-label')
+            .data(daysHuman);
+
+        dayLabels.enter()
+          .append('text')
+            .text((d) => d)
+            .attr('x', 0)
+            .attr('y', (d, i) => i * boxSize)
+            .style('text-anchor', 'start')
+            .style('dominant-baseline', 'central')
+            .attr('class', 'day-label');
+
+        dayLabelsGroup.attr('transform', `translate(-${dayLabelWidth}, ${boxSize/2})`);
     }
 
     return exports;

@@ -107,3 +107,34 @@ function drawBoxes() {
 
     boxes.exit().remove();
 }
+
+
+// Draw day labels
+const daysHuman = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+const dayLabelWidth = 25;
+
+...
+
+container
+  .append('g')
+    .classed('day-labels-group', true);
+
+...
+
+let dayLabelsGroup = svg.select('.day-labels-group');
+
+dayLabels = svg.select('.day-labels-group').selectAll('.day-label')
+    .data(daysHuman);
+
+dayLabels.enter()
+  .append('text')
+    .text((d) => d)
+    .attr('x', 0)
+    .attr('y', (d, i) => i * boxSize)
+    .style('text-anchor', 'start')
+    .style('dominant-baseline', 'central')
+    .attr('class', 'day-label');
+
+dayLabelsGroup.attr('transform', `translate(-${dayLabelWidth}, ${boxSize/2})`);
+
+

@@ -908,5 +908,12 @@ describe('Heatmap', () => {
 
             expect(actual).toEqual(expected);
         });
+
+        it('should render the day labels', () => {
+            let expected = 7;
+            let actual = container.selectAll('.day-label').nodes().length;
+
+            expect(actual).toEqual(expected);
+        });
     });
 });
