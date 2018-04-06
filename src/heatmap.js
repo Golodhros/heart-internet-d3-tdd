@@ -11,14 +11,14 @@ function heatmap() {
     };
     const boxSize = 30;
     const colorSchema = [
-        '#ccf7f6',
-        '#70e4e0',
-        '#00d8d2',
-        '#00acaf',
-        '#007f8c',
-        '#005e66',
-        '#003c3f'
+        '#C0FFE7',
+        '#95F6D7',
+        '#6AEDC7',
+        '#59C3A3',
+        '#479980'
     ];
+    const boxBorderColor = '#FFFFFF';
+    const boxBorderSize = 2;
     const daysHuman = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
     const dayLabelWidth = 30;
     const hoursHuman = [
@@ -48,21 +48,9 @@ function heatmap() {
             buildSVG(this);
             drawBoxes();
             drawDayLabels();
+            drawHourLabels();
 
-            let hourLabelsGroup = svg.select('.hour-labels-group');
-            hourLabels = svg.select('.hour-labels-group').selectAll('.hour-label')
-                .data(hoursHuman);
 
-            hourLabels.enter()
-              .append('text')
-                .text((d) => d)
-                .attr('y', 0)
-                .attr('x', (d, i) => i * boxSize)
-                .style('text-anchor', 'middle')
-                .style('dominant-baseline', 'central')
-                .attr('class', 'hour-label');
-
-            hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
         });
     }
 
@@ -138,6 +126,24 @@ function heatmap() {
             .attr('class', 'day-label');
 
         dayLabelsGroup.attr('transform', `translate(-${dayLabelWidth}, ${boxSize/2})`);
+    }
+
+    function drawHourLabels() {
+        let hourLabelsGroup = svg.select('.hour-labels-group');
+
+        hourLabels = svg.select('.hour-labels-group').selectAll('.hour-label')
+            .data(hoursHuman);
+
+        hourLabels.enter()
+          .append('text')
+            .text((d) => d)
+            .attr('y', 0)
+            .attr('x', (d, i) => i * boxSize)
+            .style('text-anchor', 'middle')
+            .style('dominant-baseline', 'central')
+            .attr('class', 'hour-label');
+
+        hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
     }
 
     return exports;

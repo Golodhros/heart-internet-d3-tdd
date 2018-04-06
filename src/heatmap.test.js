@@ -919,7 +919,7 @@ describe('Heatmap', () => {
         it('should render the hour labels', () => {
             let expected = 24;
             let actual = container.selectAll('.hour-label').nodes().length;
-
+debugger
             expect(actual).toEqual(expected);
         });
     });
