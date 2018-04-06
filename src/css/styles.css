@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Karla', sans-serif;
+    src: url("https://fonts.googleapis.com/css?family=Karla") format("opentype");
+    font-weight: 300;
+}
+
+body, html {
+    font-family: 'Karla', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    padding: 40px 60px;
+}
+
+h1 {
+    color: #282C35;
+    font-weight: 300;
+}
+
+.heatmap {}
+.day-label,
+.hour-label {
+    fill: #666A73;
+}

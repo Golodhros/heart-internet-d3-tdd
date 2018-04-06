@@ -49,8 +49,6 @@ function heatmap() {
             drawBoxes();
             drawDayLabels();
             drawHourLabels();
-
-
         });
     }
 
@@ -105,6 +103,8 @@ function heatmap() {
             .attr('x', function (d) { return d[1] * boxSize; })
             .attr('y', function (d) { return d[0] * boxSize; })
             .style('fill', function (d) { return colorScale(d[2]); })
+            .style('stroke', boxBorderColor)
+            .style('stroke-width', boxBorderSize)
             .classed('box', true);
 
         boxes.exit().remove();
