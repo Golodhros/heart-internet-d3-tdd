@@ -27,6 +27,8 @@ function heatmap() {
         '18h', '19h', '20h', '21h', '22h', '23h'
     ];
     const hourLabelHeight = 20;
+    const boxInitialColor = '#BBBBBB';
+    const animationDuration = 2000;
 
     let svg;
     let data;
@@ -102,10 +104,15 @@ function heatmap() {
             .attr('height', boxSize)
             .attr('x', function (d) { return d[1] * boxSize; })
             .attr('y', function (d) { return d[0] * boxSize; })
-            .style('fill', function (d) { return colorScale(d[2]); })
+            .style('opacity', 0.2)
+            .style('fill', boxInitialColor)
             .style('stroke', boxBorderColor)
             .style('stroke-width', boxBorderSize)
-            .classed('box', true);
+            .classed('box', true)
+            .transition()
+            .duration(animationDuration)
+            .style('fill', function (d) { return colorScale(d[2]); })
+            .style('opacity', 1);
 
         boxes.exit().remove();
     }
