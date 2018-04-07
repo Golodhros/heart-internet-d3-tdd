@@ -7,7 +7,9 @@
     "test": "karmatic",
     "test:watch": "karmatic watch --no-headless",
     "build": "webpack --progress --colors",
-    "start": "yarn build && http-server -a localhost -p 1234"
+    "dev": "webpack --watch --progress --colors",
+    "serve": "http-server -a localhost -p 1234",
+    "start": "yarn build && yarn run serve"
   },
   "repository": {
     "type": "git",
