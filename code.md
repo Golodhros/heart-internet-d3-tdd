@@ -168,3 +168,51 @@ hourLabels.enter()
     .attr('class', 'hour-label');
 
 hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
+
+
+// Styling
+boxes.enter()
+  .append('rect')
+    .classed('box', true)
+    .attr('width', boxSize)
+    .attr('height', boxSize)
+    .attr('x', function (d) { return d[1] * boxSize; })
+    .attr('y', function (d) { return d[0] * boxSize; })
+    .style('fill', function (d) { return colorScale(d[2]); })
+    .style('stroke', "#FFFFFF")
+    .style('stroke-width', 2);
+
+
+// Animation
+// First, we will fade in the boxes
+boxes.enter()
+  .append('rect')
+    .classed('box', true)
+    .attr('width', boxSize)
+    .attr('height', boxSize)
+    .attr('x', function (d) { return d[1] * boxSize; })
+    .attr('y', function (d) { return d[0] * boxSize; })
+    .style('fill', function (d) { return colorScale(d[2]); })
+    .style('stroke', boxBorderColor)
+    .style('stroke-width', boxBorderSize)
+    .style('opacity', 0)
+    .transition()
+    .duration(animationDuration)
+    .style('opacity', 1);
+
+// Next, we will animate the colors
+boxes.enter()
+  .append('rect')
+    .classed('box', true)
+    .attr('width', boxSize)
+    .attr('height', boxSize)
+    .attr('x', function (d) { return d[1] * boxSize; })
+    .attr('y', function (d) { return d[0] * boxSize; })
+    .style('opacity', 0.2)
+    .style('fill', '#BBBBBB')
+    .style('stroke', boxBorderColor)
+    .style('stroke-width', boxBorderSize)
+    .transition()
+    .duration(animationDuration)
+    .style('fill', function (d) { return colorScale(d[2]); })
+    .style('opacity', 1);

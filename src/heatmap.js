@@ -100,6 +100,7 @@ function heatmap() {
 
         boxes.enter()
           .append('rect')
+            .classed('box', true)
             .attr('width', boxSize)
             .attr('height', boxSize)
             .attr('x', function (d) { return d[1] * boxSize; })
@@ -108,7 +109,6 @@ function heatmap() {
             .style('fill', boxInitialColor)
             .style('stroke', boxBorderColor)
             .style('stroke-width', boxBorderSize)
-            .classed('box', true)
             .transition()
             .duration(animationDuration)
             .style('fill', function (d) { return colorScale(d[2]); })
