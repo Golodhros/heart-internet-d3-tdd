@@ -1,22 +1,7 @@
 const d3 = require('d3');
 
 function heatmap() {
-    const width = 800;
-    const height = 400;
-    const margin = {
-        top: 30,
-        right: 10,
-        bottom: 10,
-        left: 30
-    };
     const boxSize = 30;
-    const colorSchema = [
-        '#C0FFE7',
-        '#95F6D7',
-        '#6AEDC7',
-        '#59C3A3',
-        '#479980'
-    ];
     const boxBorderColor = '#FFFFFF';
     const boxBorderSize = 2;
     const daysHuman = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
@@ -29,6 +14,23 @@ function heatmap() {
     const hourLabelHeight = 20;
     const boxInitialColor = '#BBBBBB';
     const animationDuration = 2000;
+
+    // Configurable properties
+    let colorSchema = [
+        '#C0FFE7',
+        '#95F6D7',
+        '#6AEDC7',
+        '#59C3A3',
+        '#479980'
+    ];
+    let width = 800;
+    let height = 400;
+    let margin = {
+        top: 30,
+        right: 10,
+        bottom: 10,
+        left: 30
+    };
 
     let svg;
     let data;
@@ -152,6 +154,43 @@ function heatmap() {
 
         hourLabelsGroup.attr('transform', `translate(${boxSize/2}, -${hourLabelHeight})`);
     }
+
+    // API
+    exports.colorSchema = function(_x) {
+        if (!arguments.length) {
+            return colorSchema;
+        }
+        colorSchema = _x;
+
+        return this;
+    };
+
+    exports.height = function(_x) {
+        if (!arguments.length) {
+            return height;
+        }
+        height = _x;
+
+        return this;
+    };
+
+    exports.margin = function(_x) {
+        if (!arguments.length) {
+            return margin;
+        }
+        margin = _x;
+
+        return this;
+    };
+
+    exports.width = function(_x) {
+        if (!arguments.length) {
+            return width;
+        }
+        width = _x;
+
+        return this;
+    };
 
     return exports;
 };

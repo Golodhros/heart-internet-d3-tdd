@@ -919,8 +919,75 @@ describe('Heatmap', () => {
         it('should render the hour labels', () => {
             let expected = 24;
             let actual = container.selectAll('.hour-label').nodes().length;
-debugger
+
             expect(actual).toEqual(expected);
+        });
+    });
+
+    describe('configuring the chart', () => {
+
+        beforeEach(() => {
+            heatmapChart = heatmap();
+            container = d3.select('.container');
+
+            container.datum(data).call(heatmapChart);
+        });
+
+        afterEach(() => {
+            container.remove();
+        })
+
+        it('should provide colorSchema getter and setter', () => {
+            let previous = heatmapChart.colorSchema(),
+                expected = ['#FFFFFF'],
+                actual;
+
+            heatmapChart.colorSchema(expected);
+            actual = heatmapChart.colorSchema();
+
+            expect(previous).not.toBe(actual);
+            expect(actual).toBe(expected);
+        });
+
+        it('should provide height getter and setter', () => {
+            let previous = heatmapChart.height(),
+                expected = 100,
+                actual;
+
+            heatmapChart.height(expected);
+            actual = heatmapChart.height();
+
+            expect(previous).not.toBe(actual);
+            expect(actual).toBe(expected);
+        });
+
+        it('should provide margin getter and setter', () => {
+            let previous = heatmapChart.margin(),
+                expected = {
+                    top: 2,
+                    bottom: 2,
+                    left: 2,
+                    right: 2
+                },
+                actual;
+
+            heatmapChart.margin(expected);
+            actual = heatmapChart.margin();
+
+            expect(previous).not.toBe(actual);
+            expect(actual).toBe(expected);
+        });
+
+        it('should provide width getter and setter', () => {
+            let previous = heatmapChart.width(),
+                expected = 100,
+                actual;
+
+            heatmapChart.width(expected);
+            actual = heatmapChart.width();
+
+            expect(previous).not.toBe(actual);
+            expect(actual).toBe(expected);
         });
     });
 });

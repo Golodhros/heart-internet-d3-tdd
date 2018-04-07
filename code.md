@@ -216,3 +216,35 @@ boxes.enter()
     .duration(animationDuration)
     .style('fill', function (d) { return colorScale(d[2]); })
     .style('opacity', 1);
+
+
+// Accessors
+it('should provide colorSchema getter and setter', () => {
+    let previous = heatmapChart.colorSchema(),
+        expected = ['#FFFFFF'],
+        actual;
+
+    heatmapChart.colorSchema(expected);
+    actual = heatmapChart.colorSchema();
+
+    expect(previous).not.toBe(actual);
+    expect(actual).toBe(expected);
+});
+
+exports.colorSchema = function(_x) {
+    if (!arguments.length) {
+        return colorSchema;
+    }
+    colorSchema = _x;
+
+    return this;
+};
+
+// Configurable properties
+let colorSchema = [
+    '#C0FFE7',
+    '#95F6D7',
+    '#6AEDC7',
+    '#59C3A3',
+    '#479980'
+];

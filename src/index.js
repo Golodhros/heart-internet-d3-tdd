@@ -847,4 +847,11 @@ const data = [
 const heatmapChart = heatmap();
 let container = d3.select('.container');
 
+heatmapChart
+    .colorSchema([
+        '#ffd8d4',
+        '#ff584c',
+        '#9c1e19'
+    ]);
+
 container.datum(data).call(heatmapChart);
