@@ -13,10 +13,20 @@ main {
     padding: 40px 60px;
 }
 
+header {
+    margin-bottom: 20px;
+}
 h1 {
     color: #282C35;
     font-weight: 300;
+    margin-bottom: 5px;
 }
+p {
+    margin-top: 0;
+    font-style: italic;
+    color: #363A43;
+}
+
 
 .heatmap {}
 .day-label,
