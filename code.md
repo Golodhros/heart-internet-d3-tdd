@@ -248,3 +248,31 @@ let colorSchema = [
     '#59C3A3',
     '#479980'
 ];
+
+// Real Data
+const myAPIKey = 'ToFillWithYourAPIKey';
+const requestURLs = [
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-12:00&end_date=2018-03-12:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-13:00&end_date=2018-03-13:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-14:00&end_date=2018-03-14:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-15:00&end_date=2018-03-15:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-16:00&end_date=2018-03-16:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-17:00&end_date=2018-03-17:23&units=I`,
+    `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-18:00&end_date=2018-03-18:23&units=I`
+];
+const requests = requestURLs.map((url) => d3.json(url));
+
+Promise.all(requests)
+    .then(function(values) {
+        let dataByHour = getFormattedWindSpeed(values);
+
+        console.log('dataByHour', dataByHour)
+
+        container.datum(dataByHour).call(heatmapChart);
+    });
+
+// Data picking and formatting
+const flattenArray = array => array.reduce((acc, d) => acc.concat(d), []);
+const getWindSpeedData = (dayOfWeek, {wind_spd}, i) => [dayOfWeek, i, wind_spd];
+const getWindSpeedDataByDay = ({data}, i) => data.map(getWindSpeedData.bind(null, i));
+const getFormattedWindSpeed = (rawData) => flattenArray(rawData.map(getWindSpeedDataByDay));

@@ -37,7 +37,7 @@ limitations under the License.
 Read more in the [license document][licenseGithub]
 
 
-[demoURL]:
+[demoURL]: http://www.marcosiglesias.com
 [heatMapImg]: https://raw.githubusercontent.com/Golodhros/heart-internet-d3-tdd/master/screenshots/some-styling.png
 
 [licenseGithub]: https://github.com/Golodhros/heart-internet-d3-tdd/blob/master/LICENSE.md

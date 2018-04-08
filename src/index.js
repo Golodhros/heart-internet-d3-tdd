@@ -855,6 +855,11 @@ heatmapChart
     ]);
 
 // Fetch data
+const flattenArray = array => array.reduce((acc, d) => acc.concat(d), []);
+const getWindSpeedData = (dayOfWeek, {wind_spd}, i) => [dayOfWeek, i, wind_spd];
+const getWindSpeedDataByDay = ({data}, i) => data.map(getWindSpeedData.bind(null, i));
+const getFormattedWindSpeed = (rawData) => flattenArray(rawData.map(getWindSpeedDataByDay));
+
 const myAPIKey = '84b963b119ad495482575b63c5ac99f5';
 const requestURLs = [
     `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-12:00&end_date=2018-03-12:23&units=I`,
@@ -866,11 +871,6 @@ const requestURLs = [
     `https://api.weatherbit.io/v2.0/history/hourly?key=${myAPIKey}&lat=37.7585&lon=-122.4137&start_date=2018-03-18:00&end_date=2018-03-18:23&units=I`
 ];
 const requests = requestURLs.map((url) => d3.json(url));
-
-const flattenArray = array => array.reduce((acc, d) => acc.concat(d), []);
-const getWindSpeedData = (dayOfWeek, {wind_spd}, i) => [dayOfWeek, i, wind_spd];
-const getWindSpeedDataByDay = ({data}, i) => data.map(getWindSpeedData.bind(null, i));
-const getFormattedWindSpeed = (rawData) => flattenArray(rawData.map(getWindSpeedDataByDay));
 
 Promise.all(requests)
     .then(function(values) {
