@@ -8,12 +8,12 @@
 Visit the [blog post][postURL] to see this in action
 
 The different steps of the tutorial are:
-1. [Setup][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-setup]
-2. [Basic Chart][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-basic]
-3. [Axes][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-axis]
-4. [Styles and Animations][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-styles-and-animations]
-5. [Configuration and Accessors][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-configuration-accessors]
-6. [Using Real Data][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-fetching-real-data]
+1. [Setup](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-setup)
+2. [Basic Chart](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-basic)
+3. [Axes](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-axis)
+4. [Styles and Animations](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-styles-and-animations)
+5. [Configuration and Accessors](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-configuration-accessors)
+6. [Using Real Data](https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-fetching-real-data)
 
 ## Installation
 1. Clone the repository
