@@ -874,7 +874,7 @@ describe('Heatmap', () => {
             container.remove();
         })
 
-        it('should render the heatmap', () => {
+        it('should render a heatmap', () => {
             let expected = 1;
             let actual = container.select('.heatmap').nodes().length;
 

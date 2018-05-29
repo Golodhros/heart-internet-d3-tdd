@@ -2,10 +2,18 @@
 
 > This repository contains the code for the blog post
 
-[![Heat Map Chart][heatMapImg]][demoURL]
+[![Heat Map Chart][heatMapImg]][postURL]
 
 ## Usage
-Visit the [demo page][demoURL] to see this in action
+Visit the [blog post][postURL] to see this in action
+
+The different steps of the tutorial are:
+1. [Setup][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-setup]
+2. [Basic Chart][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-basic]
+3. [Axes][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-axis]
+4. [Styles and Animations][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-styles-and-animations]
+5. [Configuration and Accessors][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-configuration-accessors]
+6. [Using Real Data][https://github.com/Golodhros/heart-internet-d3-tdd/tree/step-fetching-real-data]
 
 ## Installation
 1. Clone the repository
@@ -37,7 +45,7 @@ limitations under the License.
 Read more in the [license document][licenseGithub]
 
 
-[demoURL]: http://www.marcosiglesias.com
+[postURL]: https://www.heartinternet.uk/blog/create-beautiful-test-driven-data-visualisations-with-d3-js/
 [heatMapImg]: https://raw.githubusercontent.com/Golodhros/heart-internet-d3-tdd/master/screenshots/some-styling.png
 
 [licenseGithub]: https://github.com/Golodhros/heart-internet-d3-tdd/blob/master/LICENSE.md

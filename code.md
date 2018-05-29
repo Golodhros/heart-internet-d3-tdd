@@ -1,7 +1,7 @@
 // Test Setup
 // adds an html fixture to the DOM
 beforeEach(() => {
-    const fixture = '<div id="fixture"></div>';
+    const fixture = '<div id="fixture"><div class="container"></div></div>';
 
     document.body.insertAdjacentHTML('afterbegin', fixture);
 });
@@ -14,10 +14,11 @@ afterEach(function() {
 // Basic chart test
 describe('rendering the chart', () => {
     let container;
+    let heatmapChart;
 
     beforeEach(() => {
         heatmapChart = heatmap();
-        container = d3.select('#fixture');
+        container = d3.select('.container');
 
         container.datum(data).call(heatmapChart);
     });
