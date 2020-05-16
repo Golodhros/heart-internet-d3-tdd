@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Golodhros/heart-internet-d3-tdd#readme",
   "dependencies": {
-    "d3": "^5.0.0"
+    "d3": "^5.16.0"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
